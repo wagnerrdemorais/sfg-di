@@ -1,6 +1,6 @@
 package com.wagnerrmorais.springdependencyinjection.controllers;
 
-import com.wagnerrmorais.springdependencyinjection.services.PetService;
+import com.wagnerrmorais.pets.PetService;
 import org.springframework.stereotype.Controller;
 
 @Controller
