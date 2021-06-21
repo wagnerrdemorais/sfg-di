@@ -2,14 +2,29 @@ package com.wagnerrmorais.springdependencyinjection.config;
 
 import com.wagnerrmorais.pets.PetService;
 import com.wagnerrmorais.pets.PetServiceFactory;
+import com.wagnerrmorais.springdependencyinjection.datasource.FakeDataSource;
 import com.wagnerrmorais.springdependencyinjection.repositories.EnglishGreetingRepository;
 import com.wagnerrmorais.springdependencyinjection.repositories.EnglishGreetingRepositoryImpl;
 import com.wagnerrmorais.springdependencyinjection.services.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
+@PropertySource("classpath:datasource.properties")
 @ImportResource("classpath:sfgdi-config.xml")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(
+            @Value("${fake.username}") String username,
+            @Value("${fake.password}") String password,
+            @Value("${fake.jdbcurl}") String jdbcUrl){
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcUrl(jdbcUrl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory(){
