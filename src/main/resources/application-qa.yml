@@ -1,0 +1,4 @@
+fake:
+  username: QaYmlUser
+  password: QaYmlPass
+  jdbcurl: QaYmlUrl

@@ -1,0 +1,4 @@
+fake:
+  username: DevYmlUser
+  password: DevYmlPass
+  jdbcurl: DevYmlUrl
