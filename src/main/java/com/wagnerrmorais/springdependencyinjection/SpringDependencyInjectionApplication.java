@@ -1,6 +1,7 @@
 package com.wagnerrmorais.springdependencyinjection;
 
 import com.wagnerrmorais.springdependencyinjection.config.SfgConfiguration;
+import com.wagnerrmorais.springdependencyinjection.config.SfgConstructorConfig;
 import com.wagnerrmorais.springdependencyinjection.controllers.*;
 import com.wagnerrmorais.springdependencyinjection.datasource.FakeDataSource;
 import com.wagnerrmorais.springdependencyinjection.services.PrototypeBean;
@@ -52,17 +53,24 @@ public class SpringDependencyInjectionApplication {
 		PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 		System.out.println(prototypeBean2.getMyScope());
 
+
+		System.out.println("------- Fake Data Source: ");
 		FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
 		System.out.println("fake username: " + fakeDataSource.getUsername());
 		System.out.println("fake password: " + fakeDataSource.getPassword());
 		System.out.println("fake datasource: " + fakeDataSource.getJdbcUrl());
 
-		System.out.println("------- Config Props Bean");
+		System.out.println("------- Config Props Bean: ");
 		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
 		System.out.println(sfgConfiguration.getUsername());
 		System.out.println(sfgConfiguration.getPassword());
 		System.out.println(sfgConfiguration.getJdbcurl());
 
+		System.out.println("------- Constructor Binding: ");
+		SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+		System.out.println(sfgConstructorConfig.getUsername());
+		System.out.println(sfgConstructorConfig.getPassword());
+		System.out.println(sfgConstructorConfig.getJdbcurl());
 
 	}
 
