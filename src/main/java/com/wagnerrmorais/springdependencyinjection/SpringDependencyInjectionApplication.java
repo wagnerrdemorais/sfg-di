@@ -1,5 +1,6 @@
 package com.wagnerrmorais.springdependencyinjection;
 
+import com.wagnerrmorais.springdependencyinjection.config.SfgConfiguration;
 import com.wagnerrmorais.springdependencyinjection.controllers.*;
 import com.wagnerrmorais.springdependencyinjection.datasource.FakeDataSource;
 import com.wagnerrmorais.springdependencyinjection.services.PrototypeBean;
@@ -55,6 +56,13 @@ public class SpringDependencyInjectionApplication {
 		System.out.println("fake username: " + fakeDataSource.getUsername());
 		System.out.println("fake password: " + fakeDataSource.getPassword());
 		System.out.println("fake datasource: " + fakeDataSource.getJdbcUrl());
+
+		System.out.println("------- Config Props Bean");
+		SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+		System.out.println(sfgConfiguration.getUsername());
+		System.out.println(sfgConfiguration.getPassword());
+		System.out.println(sfgConfiguration.getJdbcurl());
+
 
 	}
 
